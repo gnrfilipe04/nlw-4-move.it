@@ -29,6 +29,7 @@ interface ChallengesProviderProps {
   level: number;
   currentExperience: number;
   challengesCompleted: number;
+
 }
 
 export const ChallengesContext = createContext({} as ChallengesContextData);
@@ -52,6 +53,7 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
     Cookies.set('currentExperience', String(currentExperience))
     Cookies.set('challengesCompleted', String(challengesCompleted))
   }, [level, currentExperience, challengesCompleted])
+
 
   function levelUp() {
     setLevel(level + 1);

@@ -1,0 +1,86 @@
+.container {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    background: var(--blue);
+
+}
+
+.container > div > img {
+    margin: 0 10rem 0 0;
+}
+
+.loginColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    height: 30rem;
+
+    color: var(--white);
+}
+
+.loginContent {
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    padding: 0 0 6rem 0;
+}
+
+.loginContent h1 {
+    font-size: 2.4rem;
+}
+
+.loginContent input {
+    padding: 1.5rem;
+
+    background: linear-gradient(to right, rgb(73, 83, 184, 1), rgb(73, 83, 184, 0.0)) ;
+
+    border: none;
+    outline: none;
+
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+
+    color: var(--white);
+
+}
+
+.loginContent input::placeholder {
+    color: #B2B9FF;
+}
+
+.loginContent > div {
+    display: flex;
+    align-content: center;
+
+    
+}
+
+.loginContent button {
+    padding: 1rem 1.2rem;
+
+    border: none;
+    outline: none;
+
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+    font-size: 2rem;
+    color: #B2B9FF;
+
+    transition: background 0.2s;
+}
+
+.loginContent input:focus > button {
+    background: magenta;
+}

@@ -1,60 +1,36 @@
-import Head from "next/head";
-import { GetServerSideProps } from 'next'
-import { CompletedChallenges } from "../components/CompletedChallenges";
-import { Countdown } from "../components/Countdown";
-import { ExperienceBar } from "../components/ExperienceBar";
-import { Profile } from "../components/Profile";
-import { ChallengeBox } from "../components/ChallengeBox";
-import { CountdownProvider } from "../context/CountdownContext";
-import { ChallengesProvider } from '../context/ChallengesContext'
-import styles from "../styles/pages/Home.module.css";
+import Link from "next/link";
+import { useState } from "react";
 
-interface HomeProps {
-  level: number;
-  currentExperience: number;
-  challengesCompleted: number;
-}
+import styles from "../styles/pages/Login.module.css";
 
-export default function Home(props: HomeProps) {
+export default function Login() {
+  const [userName, setUserName] = useState("");
+  const [isInputChange, setIsInputChange] = useState(false)
+  const seta = '->';
+  const buttonColor ='#4cd62b' 
 
-  return (  
-      <ChallengesProvider
-      level={props.level}
-      currentExperience={props.currentExperience}
-      challengesCompleted={props.challengesCompleted}
-      >
-        <div className={styles.container}>
-        <Head>
-          <title>Início | move.it</title>
-        </Head>
-        <ExperienceBar />
-        
-        <CountdownProvider>
-          <section>
-            <div>
-              <Profile />
-              <CompletedChallenges />
-              <Countdown />
-            </div>
-            <div>
-              <ChallengeBox />
-            </div>
-          </section>
-        </CountdownProvider>
+  return (
+    <div className={styles.container}>
+      <div>
+        <img src="simbolo.svg" />
       </div>
-      </ChallengesProvider>
- 
-  );
-}
+      <div className={styles.loginColumn}>
+        <img src="Logo.svg" />
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const {level, currentExperience, challengesCompleted} = ctx.req.cookies
-  
-  return {
-    props: {
-      level: Number(level),
-      currentExperience: Number(currentExperience),
-      challengesCompleted: Number(challengesCompleted)
-    }
-  }
+        <div className={styles.loginContent}>
+            <h1>Bem vindo</h1>
+            <img src="Git.svg" />
+
+            <div>
+                <input onFocus={() => setIsInputChange(true)} onChange={(e) => setUserName(e.currentTarget.value)} placeholder='Digite seu username' />
+                <button style={{background: isInputChange ? '#4cd62b' : '#4953b8'}}>
+                    <Link href={{ pathname: "home", query: { userName: userName } }}>
+                    <a>{seta}</a>
+                    </Link>
+                </button>
+            </div>
+        </div>
+      </div>
+    </div>
+  );
 }
